@@ -291,62 +291,62 @@ page.open(url, function(status) {
 // Network can be set to alternatives:
 [
   {
-    name:'Bitcoin testnet',
+    name: 'Bitcoin testnet',
     selection: 1,
     expected: 'mucaU5iiDaJDb69BHLeDv8JFfGiyg2nJKi',
   },
   {
-    name:'Litecoin',
+    name: 'Litecoin',
     selection: 2,
     expected: 'LQ4XU8RX2ULPmPq9FcUHdVmPVchP9nwXdn',
   },
   {
-    name:'Dogecoin',
+    name: 'Dogecoin',
     selection: 3,
     expected: 'DPQH2AtuzkVSG6ovjKk4jbUmZ6iXLpgbJA',
   },
   {
-    name:'Shadowcash',
+    name: 'Shadowcash',
     selection: 4,
     expected: 'SiSZtfYAXEFvMm3XM8hmtkGDyViRwErtCG',
   },
   {
-    name:'Shadowcash testnet',
+    name: 'Shadowcash testnet',
     selection: 5,
     expected: 'tM2EDpVKaTiEg2NZg3yKg8eqjLr55BErHe',
   },
   {
-    name:'Viacoin',
+    name: 'Viacoin',
     selection: 6,
     expected: 'Vq9Eq4N5SQnjqZvxtxzo7hZPW5XnyJsmXT',
   },
   {
-    name:'Viacoin testnet',
+    name: 'Viacoin testnet',
     selection: 7,
     expected: 'tM2EDpVKaTiEg2NZg3yKg8eqjLr55BErHe',
   },
   {
-    name:'Jumbucks',
+    name: 'Jumbucks',
     selection: 8,
     expected: 'JLEXccwDXADK4RxBPkRez7mqsHVoJBEUew',
   },
   {
-    name:'CLAM',
+    name: 'CLAM',
     selection: 9,
     expected: 'xCp4sakjVx4pUAZ6cBCtuin8Ddb6U1sk9y',
   },
   {
-    name:'dash',
+    name: 'DASH',
     selection: 10,
     expected: 'XdbhtMuGsPSkE6bPdNTHoFSszQKmK4S5LT',
   },
   {
-    name:'Namecoin',
+    name: 'Namecoin',
     selection: 11,
     expected: 'Mw2vK2Bvex1yYtYF6sfbEg2YGoUc98YUD2',
   },
   {
-    name:'Peercoin',
+    name: 'Peercoin',
     selection: 12,
     expected: 'PVAiioTaK2eDHSEo3tppT9AVdBYqxRTBAm',
   },
