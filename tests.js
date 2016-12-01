@@ -288,6 +288,99 @@ page.open(url, function(status) {
 });
 },
 
+// Network can be set to alternatives:
+[
+  {
+    name:'Bitcoin testnet',
+    selection: 1,
+    expected: 'mucaU5iiDaJDb69BHLeDv8JFfGiyg2nJKi',
+  },
+  {
+    name:'Litecoin',
+    selection: 2,
+    expected: 'LQ4XU8RX2ULPmPq9FcUHdVmPVchP9nwXdn',
+  },
+  {
+    name:'Dogecoin',
+    selection: 3,
+    expected: 'DPQH2AtuzkVSG6ovjKk4jbUmZ6iXLpgbJA',
+  },
+  {
+    name:'Shadowcash',
+    selection: 4,
+    expected: 'SiSZtfYAXEFvMm3XM8hmtkGDyViRwErtCG',
+  },
+  {
+    name:'Shadowcash testnet',
+    selection: 5,
+    expected: 'tM2EDpVKaTiEg2NZg3yKg8eqjLr55BErHe',
+  },
+  {
+    name:'Viacoin',
+    selection: 6,
+    expected: 'Vq9Eq4N5SQnjqZvxtxzo7hZPW5XnyJsmXT',
+  },
+  {
+    name:'Viacoin testnet',
+    selection: 7,
+    expected: 'tM2EDpVKaTiEg2NZg3yKg8eqjLr55BErHe',
+  },
+  {
+    name:'Jumbucks',
+    selection: 8,
+    expected: 'JLEXccwDXADK4RxBPkRez7mqsHVoJBEUew',
+  },
+  {
+    name:'CLAM',
+    selection: 9,
+    expected: 'xCp4sakjVx4pUAZ6cBCtuin8Ddb6U1sk9y',
+  },
+  {
+    name:'dash',
+    selection: 10,
+    expected: 'XdbhtMuGsPSkE6bPdNTHoFSszQKmK4S5LT',
+  },
+  {
+    name:'Namecoin',
+    selection: 11,
+    expected: 'Mw2vK2Bvex1yYtYF6sfbEg2YGoUc98YUD2',
+  },
+  {
+    name:'Peercoin',
+    selection: 12,
+    expected: 'PVAiioTaK2eDHSEo3tppT9AVdBYqxRTBAm',
+  },
+].map(
+  function (testinfo) {
+    return function () {
+      page.open(url, function(status) {
+        // set the phrase and coin
+        page.evaluate(function() {
+          $(".phrase").val("abandon abandon ability");
+          $(".phrase").trigger("input");
+          $(".network option[selected]").removeAttr("selected");
+          $(".network option[value=" + testinfo.selection + "]")
+            .prop("selected", true);
+          $(".network").trigger("change");
+        });
+        // check the address is generated correctly
+        waitForGenerate(function() {
+          var actual = page.evaluate(function() {
+            return $(".address:first").text();
+          });
+          if (actual != testinfo.expected) {
+            console.log(testinfo.name + " address is incorrect");
+            console.log("Expected: " + testinfo.expected);
+            console.log("Actual: " + actual);
+            fail();
+          }
+          next();
+        });
+      });
+    };
+  }
+),
+
 // Network can be set to bitcoin testnet
 function() {
 page.open(url, function(status) {
