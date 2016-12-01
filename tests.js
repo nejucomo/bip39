@@ -137,7 +137,24 @@ function shuffle(array) {
     return array;
 }
 
-tests = [
+
+/**
+ * Flatten an array where each element is either a subarray or something
+ * else. All subarrays elements are inserted into the result array directly.
+ */
+function flatten(array) {
+  return array.reduce(
+    function (result, x) {
+      if (!Array.isArray(x)) {
+        x = [x];
+      }
+      return result.concat(x);
+    },
+    []
+  );
+}
+
+tests = flatten([
 
 // Page loads with status of 'success'
 function() {
@@ -3118,7 +3135,7 @@ page.open(url, function(status) {
 
 */
 
-];
+]);
 
 console.log("Running tests...");
 tests = shuffle(tests);
