@@ -355,14 +355,19 @@ page.open(url, function(status) {
     return function () {
       page.open(url, function(status) {
         // set the phrase and coin
-        page.evaluate(function() {
-          $(".phrase").val("abandon abandon ability");
-          $(".phrase").trigger("input");
-          $(".network option[selected]").removeAttr("selected");
-          $(".network option[value=" + testinfo.selection + "]")
-            .prop("selected", true);
-          $(".network").trigger("change");
-        });
+        page.evaluate(
+          function(selection) {
+            $(".phrase").val("abandon abandon ability");
+            $(".phrase").trigger("input");
+            $(".network option[selected]").removeAttr("selected");
+            console.log('FOO');
+            console.log(selection);
+            $(".network option[value=" + selection + "]")
+              .prop("selected", true);
+            $(".network").trigger("change");
+          },
+          testinfo.selection
+        );
         // check the address is generated correctly
         waitForGenerate(function() {
           var actual = page.evaluate(function() {
